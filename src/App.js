@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 
 function App() {
@@ -9,6 +10,8 @@ function App() {
   ];
   return (
     <div className="App">
+      <Counter></Counter>
+
       {/* <GreatProgrammers name="Suhag" desgination="web dev"></GreatProgrammers> */}
       {greatProgrammers.map((programmer) => (
         <GreatProgrammers
@@ -36,6 +39,23 @@ function App() {
     </div>
   );
 }
+
+const Counter = () => {
+  const [count, setCount] = useState(0);
+  const increase = () => setCount(count + 1);
+  const decrease = () => {
+    if (count > 0) {
+      setCount(count - 1);
+    }
+  };
+  return (
+    <div>
+      <h2>Count: {count}</h2>
+      <button onClick={increase}>Increase</button>
+      <button onClick={decrease}>Increase</button>
+    </div>
+  );
+};
 
 function GreatProgrammers(props) {
   return (
